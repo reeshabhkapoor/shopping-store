@@ -8,7 +8,10 @@ import { auth } from "./firebase";
 import ProductMessage from "./ProductMessage";
 
 function Header() {
-  const [{ basket, user }, dispatch] = useStateValue();
+  const [
+    { basket, user, addProduct, removeProduct },
+    dispatch,
+  ] = useStateValue();
   const [display, setDisplay] = useState(false);
   const [productTitle, changeProductTitle] = useState("");
   const [displayWelcome, setDisplayWelcome] = useState(false);
@@ -23,20 +26,23 @@ function Header() {
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    setDisplay(true);
+  // useEffect(() => {
+  //   setDisplay(true);
+  //   console.log("addProdutc:", addProduct);
+  //   const existingBasket = [...basket];
 
-    const existingBasket = [...basket];
+  //   const lastItem = existingBasket.pop();
+  //   changeProductTitle(lastItem?.title);
 
-    const lastItem = existingBasket.pop();
-    changeProductTitle(lastItem?.title);
+  //   const timer = setTimeout(() => {
+  //     setDisplay(false);
+  //     dispatch({
+  //       type: "CHANGE",
+  //     });
+  //   }, 3000);
 
-    const timer = setTimeout(() => {
-      setDisplay(false);
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, [basket]);
+  //   return () => clearTimeout(timer);
+  // }, [addProduct]);
 
   const handleAuthentication = () => {
     if (user) {
@@ -99,13 +105,29 @@ function Header() {
         </div>
       ) : null}
 
-      {display ? (
+      {addProduct ? (
         <div className="cartAdd">
-          {productTitle ? <ProductMessage title={productTitle} /> : null}
+          {addProduct.title ? (
+            <ProductMessage
+              addRemoveMsg="added to the cart"
+              title={addProduct.title}
+            />
+          ) : null}
 
           {/* {basket?.map((product) => (
             <ProductMessage title={product.title} />
           ))} */}
+        </div>
+      ) : null}
+
+      {removeProduct ? (
+        <div className="cartAdd">
+          {removeProduct.title ? (
+            <ProductMessage
+              addRemoveMsg="removed from the cart"
+              title={removeProduct.title}
+            />
+          ) : null}
         </div>
       ) : null}
     </div>

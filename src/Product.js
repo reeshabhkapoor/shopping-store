@@ -8,6 +8,7 @@ function Product({ id, title, image, price, rating }) {
 
   const addToBasket = () => {
     //dispatch the item to the data layer
+
     dispatch({
       type: "ADD_TO_BASKET",
       item: {
@@ -16,8 +17,17 @@ function Product({ id, title, image, price, rating }) {
         image: image,
         price: price,
         rating: rating,
+        qty: 1,
       },
+      addProduct: { title: title },
     });
+
+    const timer = setTimeout(() => {
+      dispatch({ type: "ADD_MESSAGE" });
+    }, 4000);
+
+
+    return () => clearTimeout(timer);
   };
 
   return (

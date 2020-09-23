@@ -3,6 +3,25 @@
 }
 
 .orders > h1 {
-    margin: 30px 0;
-  }
-  
+  margin: 30px 0;
+}
+
+.noOrders {
+  text-align: center;
+  background-color: greenyellow;
+  top: 300px;
+  font-weight: 700;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+  border-radius: 5px;
+  font-size: 20px;
+  background-color: lightgray;
+  padding: 15px;
+  animation: slide 2s ease-in-out 1;
+  box-shadow: 10px 10px 20px 0px green;
+  background-image: linear-gradient(#a1ffce, #faffd1);
+}

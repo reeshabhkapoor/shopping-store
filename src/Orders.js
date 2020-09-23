@@ -37,6 +37,7 @@ function Orders() {
             <Order key={order.id} order={order} />
           ))}
         </FlipMove>
+        {orders !== [] ? <div className="noOrders">No Orders</div> : null}
       </div>
     </div>
   );

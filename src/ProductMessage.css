@@ -3,7 +3,7 @@
   margin: 10px;
   background-color: lightgray;
   padding: 15px;
-  animation: slideInFromTop 2s ease-in-out infinite alternate-reverse both;
+  animation: slideInFromTop 2s ease-in-out 1;
   background-image: linear-gradient(#a1ffce, #faffd1);
   /* animation: 1s ease-in-out 0s 1 slideInFromTop; */
 }
@@ -27,10 +27,16 @@
   100% {
     transform: translateY(0);
   } */
-  0% {
-    transform: translateY(100px);
+  /* 0% {
+    transform: translateY(-100%);
   }
   100% {
+    transform: translateY(0);
+  } */
+  0% {
     transform: translateY(-100px);
+  }
+  100% {
+    transform: translateY(100px);
   }
 }
